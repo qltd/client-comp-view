@@ -22,7 +22,10 @@ class AdminController extends Controller
     }
 
     //post method calls
-    public function new_client_add(){
+    public function new_client_add(Request $request){
        $name = $request->input('client_name');
+       $project = $request->input('client_project');
+       //call methods varify the input and save it to database
+       //then return user to admin dashboard with response message
     }
 }
