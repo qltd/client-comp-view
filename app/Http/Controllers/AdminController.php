@@ -21,11 +21,42 @@ class AdminController extends Controller
         return view('new_client_form');
     }
 
+    public function new_project_form(){
+        //display new project form, which requires a list of all clients
+        return view('new_project_form'); 
+    }
+
     //post method calls
     public function new_client_add(Request $request){
        $name = $request->input('client_name');
-       $project = $request->input('client_project');
+       $des = $request->input('client_des');
        //call methods varify the input and save it to database
        //then return user to admin dashboard with response message
+       if(!empty($name)){
+            //make lowercase
+            $name = strtolower($name); 
+
+            //remove white space
+            $name = str_replace(" ","-",$name);
+
+            //save new client
+            $client = new Client;
+            $client->name = $name;
+            $client->des = $des;
+            $client->save();
+            //I guess we just assume all saves are successful?
+            //(sarcastic) yay frameworks! 
+            $request->session()->flash('alert-success', 'New client was added successfully'); 
+            $redirect = '/admin';
+       }else{
+           $request->session()->flash('alert-warning', 'Client name must be filled out'); 
+           $redirect = '/admin/new-client';
+       }
+
+       return redirect($redirect);
+    }
+
+    public function new_project_add(Request $request){
+        //add a new project 
     }
 }

@@ -32,6 +32,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/', 'HomeController@index');
     Route::get('/home', 'HomeController@index');
     Route::get('/admin', 'AdminController@index');
+    //new client
     Route::get('/admin/new-client', 'AdminController@new_client_form');
     Route::post('/admin/new-client', 'AdminController@new_client_add');
+    //new project
+    Route::get('/admin/new-project','AdminController@new_project_form');
+    Route::post('/admin/new-project','AdminController@new_project_add');
 });
