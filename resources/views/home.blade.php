@@ -17,7 +17,17 @@
                 <div class="panel-heading">Clients</div>
 
                 <div class="panel-body">
-                    Client list goes here
+                    <ul class="client-list">
+                        @foreach($clients as $client)
+                            <li class="client">
+                                <span class="client-name">{{str_replace("-"," ",$client->name)}}</span>
+                                <em>{{$client->des}}</em>
+                                <a href="/admin/new-project/{{$client->name}}">Add Project</a> |
+                                <a href="">View Projects</a> |
+                                <a href="">Edit Client</a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>

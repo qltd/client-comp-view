@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+
+//import models
+use App\Client;
+use App\Project;
+use App\Comp;
 
 class AdminController extends Controller {
     //admin controller controls various admin tasks like adding new clients and projects
@@ -14,22 +18,23 @@ class AdminController extends Controller {
     }
 
     public function index(){
-        return view('home');
+        $clients = Client::all();
+        return view('home', ['clients' => $clients]);
     }
 
     public function new_client_form(){
         return view('new_client_form');
     }
 
-    public function new_project_form(){
+    public function new_project_form($client=null){
         //display new project form, which requires a list of all clients
-        return view('new_project_form'); 
+        return view('new_project_form',['client' => $client]); 
     }
 
     //post method calls
     public function new_client_add(Request $request){
        $name = $request->input('client_name');
-       $des = $request->input('client_des');
+       $des = !empty($request->input('des')) ? $request->input('des') : '';
        //call methods varify the input and save it to database
        //then return user to admin dashboard with response message
        if(!empty($name)){
@@ -44,8 +49,6 @@ class AdminController extends Controller {
             $client->name = $name;
             $client->des = $des;
             $client->save();
-            //I guess we just assume all saves are successful?
-            //(sarcastic) yay frameworks! 
             $request->session()->flash('alert-success', 'New client was added successfully'); 
             $redirect = '/admin';
        }else{
@@ -61,6 +64,7 @@ class AdminController extends Controller {
         $name = $request->input('project_name');
         $client = $request->input('client_name');
         $start_date = $request->input('project_start_date');
+        $des = !empty($request->input('des')) ? $request->input('des') : '';
 
         if(!empty($name) && !empty($client)){
             $name = strtolower($name); 
@@ -71,6 +75,7 @@ class AdminController extends Controller {
             $project->name = $name;
             $project->client = $client;
             $project->start_date = $start_date;
+            $project->des = $des;
             $project->save();
             $request->session()->flash('alert-success','New project was successfully added');
             $redirect = '/admin';
@@ -80,5 +85,10 @@ class AdminController extends Controller {
         }
 
         return redirect($redirect);
+    }
+
+    public function new_comp_add(Request $request){
+        //add a new comp for a project 
+        
     }
 }

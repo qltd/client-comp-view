@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Add New Project</div>
                 <div class="panel-body">
-                    <form method="post" action="/admin/new-client">
+                    <form method="post" action="/admin/new-project">
                         {{ Form::token() }}
                         <ul style="list-style:none;">
                             <li class="form-group">
@@ -16,7 +16,8 @@
                             </li>
                             <li class="form-group">
                                 <label for="client_name">Client Name</label>
-                                <input type="text" name="client_name" class="form-control"  placeholder="enter client name" />
+                                <input type="text" name="client_name" class="form-control"  placeholder="enter client name" 
+                                        value="{{str_replace("-"," ",$client)}}" />
                             </li>
                             <li class="form-group">
                                 <label for="des">Description</label>
