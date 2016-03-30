@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class AdminController extends Controller
-{
-    public function __construct()
-    {
+class AdminController extends Controller {
+    //admin controller controls various admin tasks like adding new clients and projects
+
+    public function __construct() {
         $this->middleware('auth');
     }
 
@@ -58,5 +58,27 @@ class AdminController extends Controller
 
     public function new_project_add(Request $request){
         //add a new project 
+        $name = $request->input('project_name');
+        $client = $request->input('client_name');
+        $start_date = $request->input('project_start_date');
+
+        if(!empty($name) && !empty($client)){
+            $name = strtolower($name); 
+            $name = str_replace(" ","-",$name);
+            $client = strtolower($client);
+            $client = str_replace(" ","-",$client);
+            $project = new Project;
+            $project->name = $name;
+            $project->client = $client;
+            $project->start_date = $start_date;
+            $project->save();
+            $request->session()->flash('alert-success','New project was successfully added');
+            $redirect = '/admin';
+        }else{
+            $request->session()->flash('alert-warning','Project name must be filled out and client selected'); 
+            $redirect = '/admin/new-project';
+        }
+
+        return redirect($redirect);
     }
 }

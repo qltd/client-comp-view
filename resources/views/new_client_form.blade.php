@@ -15,8 +15,8 @@
                                 <input type="text" name="client_name" class="form-control" placeholder="enter client name" />
                             </li>
                             <li class="form-group">
-                                <label for="client_name">Project Name</label>
-                                <input type="text" name="project_name" class="form-control"  placeholder="enter project name" />
+                                <label for="des">Client Description</label>
+                                <input type="text" name="des" class="form-control"  placeholder="enter optional description" />
                             </li>
                             <li class="form-group">
                                 <input type="submit" name="submit_new_client" class="btn btn-default"  value="save new client" />
