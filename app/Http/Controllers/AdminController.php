@@ -31,6 +31,18 @@ class AdminController extends Controller {
         return view('new_project_form',['client' => $client]); 
     }
 
+    public function view_projects($client=null){
+        if(is_null($client)){
+           //if we are trying to view projects without a client, go back to the dashboard with a warning message 
+           $request->session()->flash('alert-warning', 'Client not selected'); 
+           return redirect("/");
+        }
+        //grab a list of all projects for the client
+        $projects = Project::where('client','=',$client)->get();
+
+        return view('view_projects',['client' => $client, 'projects' => $projects]); 
+    }
+
     //post method calls
     public function new_client_add(Request $request){
        $name = $request->input('client_name');

@@ -29,8 +29,8 @@
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/', 'HomeController@index');
-    Route::get('/home', 'HomeController@index');
+    Route::get('/', 'AdminController@index');
+    Route::get('/home', 'AdminController@index');
     Route::get('/admin', 'AdminController@index');
     //new client
     Route::get('/admin/new-client', 'AdminController@new_client_form');
@@ -38,4 +38,7 @@ Route::group(['middleware' => 'web'], function () {
     //new project
     Route::get('/admin/new-project/{client?}','AdminController@new_project_form');
     Route::post('/admin/new-project','AdminController@new_project_add');
+    //view projects
+    Route::get('/admin/view-projects/{client?}','AdminController@view_projects');
+    Route::get('/admin/view-project/{project?}','AdminController@view_project');
 });

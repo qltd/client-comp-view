@@ -23,7 +23,7 @@
                                 <span class="client-name">{{str_replace("-"," ",$client->name)}}</span>
                                 <em>{{$client->des}}</em>
                                 <a href="/admin/new-project/{{$client->name}}">Add Project</a> |
-                                <a href="">View Projects</a> |
+                                <a href="/admin/view-projects/{{$client->name}}">View Projects</a> |
                                 <a href="">Edit Client</a>
                             </li>
                         @endforeach
