@@ -116,7 +116,17 @@ class AdminController extends Controller {
     public function new_comp(Request $request){
         //add a new comp for a project 
         //we are also handling file upload in this method
-        var_dump($request); 
-        die;
+        if($request->file('file')->isValid()){
+            //name file, move file 
+            //$name = 
+            //$request->file('file')->move('/comps',$name);
+            var_dump($request->file('file')->getClientOriginalName());
+            die;
+        }else{
+            $request->session()->flash('alert-warning','Sorry, that is not a valid file'); 
+            $redirect = '/admin/new-comp/'.$request->input('project');
+        }
+
+        return redirect($redirect);
     }
 }
