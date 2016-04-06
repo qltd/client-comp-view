@@ -43,6 +43,20 @@ class AdminController extends Controller {
         return view('view_projects',['client' => $client, 'projects' => $projects]); 
     }
 
+    public function view_project($project=null){
+        //This is where we list the specific details of a project for an admin's view
+        if(is_null($project)){
+           $request->session()->flash('alert-warning', 'Project not selected'); 
+           return redirect("/");
+        }
+        //need to grab project information and return view.
+    }
+
+    public function new_comp_form($project){
+        //display a form to add a new comp to a project 
+        return view('new_comp_form',['project' => $project]);
+    }
+
     //post method calls
     public function new_client_add(Request $request){
        $name = $request->input('client_name');
@@ -99,8 +113,10 @@ class AdminController extends Controller {
         return redirect($redirect);
     }
 
-    public function new_comp_add(Request $request){
+    public function new_comp(Request $request){
         //add a new comp for a project 
-        
+        //we are also handling file upload in this method
+        var_dump($request); 
+        die;
     }
 }

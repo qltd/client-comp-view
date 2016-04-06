@@ -8,7 +8,7 @@
                 <div class="panel-heading">New Project</div>
 
                 <div class="panel-body">
-                    <a href="/admin/new-project/{{$client->name}}" class="button">Add New Project</a>
+                    <a href="/admin/new-project/{{$client}}" class="button">Add New Project</a>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
                         @foreach($projects as $project) 
                             <li class="project">
                                 <span class="name">{{str_replace("-"," ", $project->name)}}</span>
-                                <a href="">Add Comp</a> |
+                                <a href="/admin/new-comp/{{$project->name}}">Add Comp</a> |
                                 <a href="">View Project</a> |
                                 <a href="">Edit Project</a>
                             </li>

@@ -41,4 +41,7 @@ Route::group(['middleware' => 'web'], function () {
     //view projects
     Route::get('/admin/view-projects/{client?}','AdminController@view_projects');
     Route::get('/admin/view-project/{project?}','AdminController@view_project');
+    //new comp
+    Route::get('/admin/new-comp/{project}','AdminController@new_comp_form');
+    Route::post('/admin/new-comp','AdminController@new_comp');
 });
