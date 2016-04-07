@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddImgPathToCompTable' => $baseDir . '/database/migrations/2016_04_07_135429_add_img_path_to_comp_table.php',
     'CreateAdminsTable' => $baseDir . '/database/migrations/2016_03_03_170339_create_admins_table.php',
     'CreateClientTable' => $baseDir . '/database/migrations/2016_03_29_123859_create_client_table.php',
     'CreateClientsTable' => $baseDir . '/database/migrations/2016_03_30_124730_create_clients_table.php',

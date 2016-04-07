@@ -20,6 +20,10 @@
                                 <input type="text" name="des" class="form-control"  placeholder="enter optional description" />
                             </li>
                             <li class="form-group">
+                                <label for="date">Display Date</label>
+                                <input type="text" name="date" class="form-control"  placeholder="enter date you wish to display" />
+                            </li>
+                            <li class="form-group">
                                 <label for="file">Upload File</label>
                                 <input type="file" name="file" class="form-control" />
                             </li>

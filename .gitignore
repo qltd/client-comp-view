@@ -2,3 +2,5 @@
 .vagrant
 database/
 config/
+*.swp
+public/comps/

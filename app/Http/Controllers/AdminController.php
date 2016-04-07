@@ -49,7 +49,9 @@ class AdminController extends Controller {
            $request->session()->flash('alert-warning', 'Project not selected'); 
            return redirect("/");
         }
-        //need to grab project information and return view.
+        $comps = Comp::where('project','=',$project)->get();
+
+        return view('view_project',['comps' => $comps, 'project' => $project]);
     }
 
     public function new_comp_form($project){
@@ -118,10 +120,19 @@ class AdminController extends Controller {
         //we are also handling file upload in this method
         if($request->file('file')->isValid()){
             //name file, move file 
-            //$name = 
-            //$request->file('file')->move('/comps',$name);
-            var_dump($request->file('file')->getClientOriginalName());
-            die;
+            $name = 'c'.time().$request->file('file')->getClientOriginalName();
+            $request->file('file')->move(__DIR__.'/../../../public/comps',$name);
+            //save comp in database
+            $comp = new Comp;
+            $comp->title = $request->input('comp_name');
+            $comp->project = $request->input('project');
+            $comp->link = '';//this will be where the comp links to when clicked
+            $comp->img_path = '/comps/'.$name;
+            $comp->display_date = $request->input('date');
+            $comp->save();
+            //redirect and give success message
+            $request->session()->flash('alert-success','New comp was successfully added');
+            $redirect = '/admin';
         }else{
             $request->session()->flash('alert-warning','Sorry, that is not a valid file'); 
             $redirect = '/admin/new-comp/'.$request->input('project');

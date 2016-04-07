@@ -21,8 +21,9 @@
                             <li class="project">
                                 <span class="name">{{str_replace("-"," ", $project->name)}}</span>
                                 <a href="/admin/new-comp/{{$project->name}}">Add Comp</a> |
-                                <a href="">View Project</a> |
-                                <a href="">Edit Project</a>
+                                <a href="/admin/view-project/{{$project->name}}">View Project Comps</a> |
+                                <a href="">Edit Project</a> | 
+                                <a href="">Client View</a>
                             </li>
                         @endforeach
                     </ul>
