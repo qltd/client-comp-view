@@ -4,3 +4,4 @@ database/
 config/
 *.swp
 public/comps/
+node_modules/
