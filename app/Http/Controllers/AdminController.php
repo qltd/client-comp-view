@@ -56,7 +56,8 @@ class AdminController extends Controller {
 
     public function new_comp_form($project){
         //display a form to add a new comp to a project 
-        return view('new_comp_form',['project' => $project]);
+        $comps = Comp::where('project','=',$project)->get();
+        return view('new_comp_form',['project' => $project, 'comps' => $comps]);
     }
 
     //post method calls
@@ -126,7 +127,7 @@ class AdminController extends Controller {
             $comp = new Comp;
             $comp->title = $request->input('comp_name');
             $comp->project = $request->input('project');
-            $comp->link = '';//this will be where the comp links to when clicked
+            $comp->link = $request->input('link');            
             $comp->img_path = '/comps/'.$name;
             $comp->display_date = $request->input('date');
             $comp->save();

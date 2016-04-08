@@ -2,18 +2,22 @@
 
 //Styles for comp app @rdar
 
-.client-list {
+.client-list, .project-wrap {
     li {
         list-style:none;
+        &.client {
+            list-style:none;
+        }
     }
 }
 
 
-.client-name {
+.client-name, .name {
     font-size: 16px;
+    text-transform: uppercase;
 }
 
-.client {
+.client, .project {
     em {
         margin-right: 1rem;
     }

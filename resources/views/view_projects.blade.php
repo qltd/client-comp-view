@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-10 ">
             <div class="panel panel-default">
-                <div class="panel-heading">All Projects for {{str_replace("-"," ",$client)}}</div>
+                <div class="panel-heading">All Projects for <span class="name">{{str_replace("-"," ",$client)}}</span></div>
                 <div class="panel-body">
                     <ul class="project-wrap">
                         @foreach($projects as $project) 

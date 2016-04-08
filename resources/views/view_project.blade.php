@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-10 ">
             <div class="panel panel-default">
-                <div class="panel-heading">All Comps for {{str_replace("-"," ",$project)}}</div>
+                <div class="panel-heading">All Comps for <span class="name">{{str_replace("-"," ",$project)}}</span></div>
                 <div class="panel-body">
                         @foreach($comps as $comp) 
                             <div class="row">

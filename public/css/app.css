@@ -1,10 +1,13 @@
-.client-list li {
+.client-list li, .project-wrap li {
   list-style: none; }
+  .client-list li.client, .project-wrap li.client {
+    list-style: none; }
 
-.client-name {
-  font-size: 16px; }
+.client-name, .name {
+  font-size: 16px;
+  text-transform: uppercase; }
 
-.client em {
+.client em, .project em {
   margin-right: 1rem; }
 
 img {

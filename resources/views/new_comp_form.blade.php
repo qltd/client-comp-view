@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12 ">
             <div class="panel panel-default">
-                <div class="panel-heading">Add New Comp for {{$project}}</div>
+                <div class="panel-heading">Add New Comp for <span class="name">{{str_replace("-"," ",$project)}}</span></div>
                 <div class="panel-body">
                     <form method="post" action="/admin/new-comp" enctype="multipart/form-data">
                         {{ Form::token() }}
@@ -27,6 +27,19 @@
                                 <label for="file">Upload File</label>
                                 <input type="file" name="file" class="form-control" />
                             </li>
+                            @if(!empty($comps))
+                            <li class="form-group">
+                                <label for="link">Link</label>
+                                <select name="link">
+                                    <option value="0">None</option>
+                                   @foreach($comps as $comp) 
+                                        <option value="{{$comp->id}}">
+                                            <span class="name">{{$comp->title}}</span>
+                                        </option>
+                                   @endforeach
+                                </select>
+                            </li>
+                            @endif
                             <li class="form-group">
                                 <input type="submit" name="submit_new_client" class="btn btn-default"  value="add new comp" />
                             </li>

@@ -45,4 +45,5 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/admin/new-comp/{project}','AdminController@new_comp_form');
     Route::post('/admin/new-comp','AdminController@new_comp');
     //view comps
+    Route::get('/view/comp/{id}','CompController@view_comp');
 });
