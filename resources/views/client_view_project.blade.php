@@ -1,8 +1,11 @@
+@extends('layouts.app')
+
+@section('content')
 <div class="project-view_wrap">
     <div class="container">
       <div class="col-left">
         <header>
-        <h1 class="logo-wrap"><img src="images/Q-logo-white.png" alt="Q LTD logo" class="logo"></h1>
+        <h1 class="logo-wrap"><img src="/images/Q-logo-white.png" alt="Q LTD logo" class="logo"></h1>
         <div class="tagline-wrap">
           <div class="dash-mark"></div>
           <p class="tagline"><strong>Breakthrough Creative</strong><br />Since 1981</p>
