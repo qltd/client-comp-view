@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+@if(empty($show_client_project))
     <title>Q Client Comp View</title>
 
     <!-- Fonts -->
@@ -24,6 +24,17 @@
             margin-right: 6px;
         }
     </style>
+@else 
+    <title>{{$project->name}}</title>
+    <link rel="stylesheet" type="text/css" href="/css/client_project.css">
+    <link rel="stylesheet" href="/css/ie-fix.css">
+    <script type="text/javascript" src="//use.typekit.net/wfh0pcr.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+@endif
 </head>
 <body id="app-layout">
 @if (empty($show_comp))
