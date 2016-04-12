@@ -23,7 +23,7 @@
                                 <a href="/admin/new-comp/{{$project->name}}">Add Comp</a> |
                                 <a href="/admin/view-project/{{$project->name}}">View Project Comps</a> |
                                 <a href="">Edit Project</a> | 
-                                <a href="">Client View</a>
+                                <a href="/view/project/{{$project->name}}">Client View</a>
                             </li>
                         @endforeach
                     </ul>

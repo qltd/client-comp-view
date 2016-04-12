@@ -26,7 +26,7 @@
     </style>
 @else 
     <title>{{$project->name}}</title>
-    <link rel="stylesheet" type="text/css" href="/css/client_project.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
     <link rel="stylesheet" href="/css/ie-fix.css">
     <script type="text/javascript" src="//use.typekit.net/wfh0pcr.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>

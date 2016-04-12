@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+
 use App\Comp;
 use App\Project;
 
@@ -22,6 +22,9 @@ class CompController extends Controller{
     public function view_project($project){
         $comps = Comp::where('project','=',$project)->get(); 
         $project = Project::where('name','=',$project)->get();
-        return view('client_view_project',['comps' => $comps, 'project' => $project]);
+        foreach($project as $p){
+            $project_name = str_replace('-',' ',$p->name); 
+        }
+        return view('client_view_project',['comps' => $comps, 'project_name' => $project_name, 'show_client_project' => true]);
     }
 }

@@ -18,7 +18,7 @@
       </div>
       <div class="col-right">
         <main>
-          <h1>{{$project->name}}</h1>
+          <h1>{{$project_name}}</h1>
             @foreach($comps as $comp)
               <hr>
               <section class="file-group">
