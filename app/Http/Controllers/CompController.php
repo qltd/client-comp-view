@@ -25,6 +25,6 @@ class CompController extends Controller{
         foreach($project as $p){
             $project_name = str_replace('-',' ',$p->name); 
         }
-        return view('client_view_project',['comps' => $comps, 'project_name' => $project_name, 'show_client_project' => true]);
+        return view('client_view_project',['comps' => $comps, 'project_name' => $project_name, 'show_client_project' => true, 'show_comp' => true]);
     }
 }

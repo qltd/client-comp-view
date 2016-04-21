@@ -12,27 +12,26 @@
         </div>
         <hr>
         <ul class="contact-list">
-          <li><a href="mailto:insa@qltd.com"><i class="fa fa-envelope"></i> Insa Keilbach</a></li>
-          <li><a href="mailto:mike@qltd.com"><i class="fa fa-envelope"></i> Mike Bondra</a></li>
-          <li><a href="mailto:christine@qltd.com"> <i class="fa fa-envelope"></i> Christine Golus</a></li>
-          <li><a href="mailto:amy@qltd.com"><i class="fa fa-envelope"></i> Amy Mayer</a></li>
+        <!--  <li><a href="mailto:insa@qltd.com"><i class="fa fa-envelope"></i> Insa Keilbach</a></li>-->
         </ul>
         </header>
       </div>
       <div class="col-right">
         <main>
           <h1>{{$project_name}}</h1>
+            {{--*/ $display_date = '' /*--}}
             @foreach($comps as $comp)
-              <hr>
+               @if($display_date != $comp->display_date) 
+                  <hr>
+               @endif
               <section class="file-group">
-                <span class="date">May 21, 2014</span>
+               @if($display_date != $comp->display_date) 
+                    <h2><span class="date">{{$comp->display_date}}</span></h2>
+                    {{--*/ $display_date = $comp->display_date /*--}}
+               @endif
                <!-- <h2>Website Refinements</h2>-->
                 <ul class="assets-list">
-                  <li>v1: <a href="#">Desktop</a></li>
-                  <li>v1: <a href="#">Desktop with submenu</a></li>
-                  <li>v1: <a href="#">Tablet</a></li>
-                  <li>v1: <a href="#">Mobile</a></li>
-                  <li>v1: <a href="#">Mobile with submenu</a></li>
+                  <li><a href="/view/comp/{{$comp->id}}">{{$comp->title}}</a></li>
                 </ul>
               </section>
             @endforeach
