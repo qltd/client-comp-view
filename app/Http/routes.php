@@ -35,12 +35,18 @@ Route::group(['middleware' => 'web'], function () {
     //new client
     Route::get('/admin/new-client', 'AdminController@new_client_form');
     Route::post('/admin/new-client', 'AdminController@new_client_add');
+    //edit client
+    Route::get('/admin/edit-client/{client}','AdminController@edit_client_form');
+    Route::post('/admin/edit-client/{client}','AdminController@edit_client');
     //new project
     Route::get('/admin/new-project/{client?}','AdminController@new_project_form');
     Route::post('/admin/new-project','AdminController@new_project_add');
     //view projects
     Route::get('/admin/view-projects/{client?}','AdminController@view_projects');
     Route::get('/admin/view-project/{project?}','AdminController@view_project');
+    //edit project
+    Route::get('/admin/edit-project/{project}','AdminController@edit_project_form');
+    Route::post('/admin/edit-project/{project}','AdminController@edit_project');
     //new comp
     Route::get('/admin/new-comp/{project}','AdminController@new_comp_form');
     Route::post('/admin/new-comp','AdminController@new_comp');

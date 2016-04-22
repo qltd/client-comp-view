@@ -14,7 +14,7 @@ class CompController extends Controller{
         $comp = Comp::where('id','=',$id)->get();
         foreach($comp as $c){
             $img = !empty($c->img_path) ? $c->img_path : '';
-            $link = !empty($c->link) ? $c->link : '';
+            $link = !empty($c->link) ? $c->link : '/view/project/'.$c->project;
         }
         return view('view_comp',['img' => $img, 'link' => $link]);
     }

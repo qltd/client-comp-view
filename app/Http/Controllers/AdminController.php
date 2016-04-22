@@ -26,9 +26,38 @@ class AdminController extends Controller {
         return view('new_client_form');
     }
 
+    public function edit_client_form($client){
+        $client_data = Client::where('name','=',$client)->get();
+        if(!empty($client_data)){
+            foreach($client_data as $cd){
+                $view_data = array(
+                    'name' => $cd->name,
+                    'des' => $cd->des
+                );
+            } 
+        }
+        return view('edit_client_form',$view_data); 
+    }
+
+
     public function new_project_form($client=null){
         //display new project form, which requires a list of all clients
         return view('new_project_form',['client' => $client]); 
+    }
+
+    public function edit_project_form($project){
+        $project_data = Project::where('name','=',$project)->get(); 
+        if(!empty($project_data)){
+            foreach($project_data as $pd){
+                $res = array(
+                    'name' => $project,
+                    'client_name' => $pd->client,
+                    'des' => $pd->des,
+                    'start_date' => $pd->start_date
+                ); 
+            } 
+        }
+        return view('edit_project',$res);
     }
 
     public function view_projects($client=null){
@@ -60,7 +89,34 @@ class AdminController extends Controller {
         return view('new_comp_form',['project' => $project, 'comps' => $comps]);
     }
 
-    //post method calls
+    /**
+     * POST methods
+     *
+     * */
+
+    public function edit_client(Request $request,$client){
+        $des = htmlspecialchars($request->input('des'));
+        $cd = Client::where('name','=',$client)->update(array('des'=>$des)); 
+        if($cd){
+            $request->session()->flash('alert-success', 'Client was updated successfully'); 
+        }else{
+            $request->session()->flash('alert-warning', 'Sorry, we were not able to update that client'); 
+        }
+        return redirect('/admin');
+    }
+
+    public function edit_project(Request $request, $project){
+        $des = htmlspecialchars($request->input('des'));
+        $start_date = htmlspecialchars($request->input('project_start_date'));
+        $pd = Project::where('name','=',$project)->update(array('des'=>$des,'start_date'=>$start_date));
+        if($pd){
+            $request->session()->flash('alert-success', 'Project was updated successfully'); 
+        }else{
+            $request->session()->flash('alert-warning', 'Sorry, we were not able to update that project'); 
+        }
+        return redirect('/admin');
+    }
+
     public function new_client_add(Request $request){
        $name = $request->input('client_name');
        $des = !empty($request->input('des')) ? $request->input('des') : '';

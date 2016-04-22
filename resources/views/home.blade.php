@@ -24,7 +24,7 @@
                                 <em>{{$client->des}}</em>
                                 <a href="/admin/new-project/{{$client->name}}">Add Project</a> |
                                 <a href="/admin/view-projects/{{$client->name}}">View Projects</a> |
-                                <a href="">Edit Client</a>
+                                <a href="/admin/edit-client/{{$client->name}}">Edit Client</a>
                             </li>
                         @endforeach
                     </ul>
