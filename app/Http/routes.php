@@ -50,8 +50,17 @@ Route::group(['middleware' => 'web'], function () {
     //new comp
     Route::get('/admin/new-comp/{project}','AdminController@new_comp_form');
     Route::post('/admin/new-comp','AdminController@new_comp');
-    //view comps
+    //edit comp
+    Route::get('/admin/edit-comp/{id}','AdminController@edit_comp_form');
+    Route::post('/admin/edit-comp','AdminController@edit_comp');
+    //client view comps
     Route::get('/view/comp/{id}','CompController@view_comp');
     //client view project
     Route::get('/view/project/{project}','CompController@view_project');
+
+    //archiving
+    Route::post('/admin/activate-client','AdminController@activate_client');
+    Route::post('/admin/deactivate-client','AdminController@deactivate_client');
+    Route::post('/admin/activate-project','AdminController@activate_project');
+    Route::post('/admin/deactivate-project','AdminController@deactivate_project');
 });

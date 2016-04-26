@@ -2,6 +2,8 @@
 
 //Styles for comp app @rdar
 
+.dissapear {display:none;}
+
 .client-list, .project-wrap {
     li {
         list-style:none;
@@ -26,3 +28,5 @@
 img {
     max-width: 100%;
 }
+
+

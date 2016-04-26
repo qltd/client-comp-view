@@ -53,7 +53,8 @@ class AdminController extends Controller {
                     'name' => $project,
                     'client_name' => $pd->client,
                     'des' => $pd->des,
-                    'start_date' => $pd->start_date
+                    'start_date' => $pd->start_date,
+                    'project_contact' => $pd->project_contact
                 ); 
             } 
         }
@@ -89,6 +90,24 @@ class AdminController extends Controller {
         return view('new_comp_form',['project' => $project, 'comps' => $comps]);
     }
 
+    public function edit_comp_form($id){
+        $comp = Comp::where('id','=',$id)->get(); 
+        if(!empty($comp)){
+            foreach($comp as $c){
+                $res = array(
+                    'project' => $c->project,
+                    'name' => $c->title,
+                    'des' => $c->des,
+                    'dd' => $c->display_date,
+                    'img' => $c->img_path,
+                    'id' => $c->id
+                ); 
+            } 
+            $res['project_comps'] = Comp::where('project','=',$res['project'])->get();
+        }
+        return view('edit_comp_form',$res);
+    }
+
     /**
      * POST methods
      *
@@ -117,6 +136,18 @@ class AdminController extends Controller {
         return redirect('/admin');
     }
 
+    public function edit_comp(Request $request){
+        $update_array = array(
+            'title' => $request->input('comp_name'), 
+            'display_date' => $request->input('date'),
+            'link' => $request->input('link')
+        );
+        $update = Comp::where('id','=',$request->input('id'))->update($update_array);
+        if($update){
+             
+        }
+    }
+
     public function new_client_add(Request $request){
        $name = $request->input('client_name');
        $des = !empty($request->input('des')) ? $request->input('des') : '';
@@ -133,6 +164,7 @@ class AdminController extends Controller {
             $client = new Client;
             $client->name = $name;
             $client->des = $des;
+            $client->active = 'active';
             $client->save();
             $request->session()->flash('alert-success', 'New client was added successfully'); 
             $redirect = '/admin';
@@ -150,6 +182,7 @@ class AdminController extends Controller {
         $client = $request->input('client_name');
         $start_date = $request->input('project_start_date');
         $des = !empty($request->input('des')) ? $request->input('des') : '';
+        $project_contact = !empty($request->input('project_contact')) ? $request->input('project_contact') : '';
 
         if(!empty($name) && !empty($client)){
             $name = strtolower($name); 
@@ -161,6 +194,8 @@ class AdminController extends Controller {
             $project->client = $client;
             $project->start_date = $start_date;
             $project->des = $des;
+            $project->active = 'active';
+            $project->project_contact = $project_contact;
             $project->save();
             $request->session()->flash('alert-success','New project was successfully added');
             $redirect = '/admin';
@@ -186,6 +221,7 @@ class AdminController extends Controller {
             $comp->link = $request->input('link');            
             $comp->img_path = '/comps/'.$name;
             $comp->display_date = $request->input('date');
+            $comp->active = 'active';
             $comp->save();
             //redirect and give success message
             $request->session()->flash('alert-success','New comp was successfully added');
@@ -196,5 +232,61 @@ class AdminController extends Controller {
         }
 
         return redirect($redirect);
+    }
+
+    public function activate_client(Request $request){
+        if(!empty($request->input('client_name'))){
+            $cd = Client::where('name','=',$request->input('client_name'))->update(array('active'=>'active')); 
+            if($cd){
+                $request->session()->flash('alert-success','Client was activated');
+            }else{
+                $request->session()->flash('alert-warning','Client was not able to be activated at this time');
+            }
+        }else{
+                $request->session()->flash('alert-warning','Sorry, we do not know which client should be activated');
+        }
+        return redirect('/admin');
+    }
+
+    public function deactivate_client(Request $request){
+        if(!empty($request->input('client_name'))){
+            $cd = Client::where('name','=',$request->input('client_name'))->update(array('active'=>'')); 
+            if($cd){
+                $request->session()->flash('alert-success','Client was archived successfully');
+            }else{
+                $request->session()->flash('alert-warning','Client was not able to be archived at this time');
+            }
+        }else{
+                $request->session()->flash('alert-warning','Sorry, we do not have enough information to archive that client');
+        }
+        return redirect('/admin');
+    }
+
+    public function activate_project(Request $request){
+        if(!empty($request->input('project_name'))){
+            $cd = Project::where('name','=',$request->input('project_name'))->update(array('active'=>'active')); 
+            if($cd){
+                $request->session()->flash('alert-success','Project was activated');
+            }else{
+                $request->session()->flash('alert-warning','Project was not able to be activated at this time');
+            }
+        }else{
+                $request->session()->flash('alert-warning','Sorry, we do not know which Project should be activated');
+        }
+        return redirect('/admin/view-projects/'.$request->input('client_name'));
+    }
+
+    public function deactivate_project(Request $request){
+        if(!empty($request->input('project_name'))){
+            $cd = Project::where('name','=',$request->input('project_name'))->update(array('active'=>'')); 
+            if($cd){
+                $request->session()->flash('alert-success','Project was archived');
+            }else{
+                $request->session()->flash('alert-warning','Project was not able to be archived at this time');
+            }
+        }else{
+                $request->session()->flash('alert-warning','Sorry, we do not know which Project should be archived');
+        }
+        return redirect('/admin/view-projects/'.$request->input('client_name'));
     }
 }

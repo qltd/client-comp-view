@@ -23,6 +23,12 @@
                             </li>
                         </ul>
                     </form>
+                    <hr>
+                    <form method="post" action="/admin/deactivate-client">
+                        {{ Form::token() }}
+                        <input type="hidden" name="client_name" value="{{$name}}" />
+                        <input type="submit" value="Archive" />
+                    </form>
                 </div>
             </div>
         </div>
