@@ -144,8 +144,11 @@ class AdminController extends Controller {
         );
         $update = Comp::where('id','=',$request->input('id'))->update($update_array);
         if($update){
-             
+            $request->session()->flash('alert-success', 'Comp was updated successfully'); 
+        }else{
+            $request->session()->flash('alert-warning', 'Sorry, we were not able to update that comp'); 
         }
+        return redirect('/admin/view-project/'.$request->input('project'));
     }
 
     public function new_client_add(Request $request){
@@ -288,5 +291,33 @@ class AdminController extends Controller {
                 $request->session()->flash('alert-warning','Sorry, we do not know which Project should be archived');
         }
         return redirect('/admin/view-projects/'.$request->input('client_name'));
+    }
+
+    public function deactivate_comp(Request $request){
+        if(!empty($request->input('id'))){
+            $cd = Comp::where('id','=',$request->input('id'))->update(array('active'=>'')); 
+            if($cd){
+                $request->session()->flash('alert-success','Comp was archived');
+            }else{
+                $request->session()->flash('alert-warning','Comp was not able to be archived at this time');
+            }
+        }else{
+                $request->session()->flash('alert-warning','Sorry, we do not know which Comp should be archived');
+        }
+        return redirect('/admin/view-project/'.$request->input('project_name'));
+    }
+
+    public function activate_comp(Request $request){
+        if(!empty($request->input('id'))){
+            $cd = Comp::where('id','=',$request->input('id'))->update(array('active'=>'active')); 
+            if($cd){
+                $request->session()->flash('alert-success','Comp was activated');
+            }else{
+                $request->session()->flash('alert-warning','Comp was not able to be activated at this time');
+            }
+        }else{
+                $request->session()->flash('alert-warning','Sorry, we do not know which Comp should be activated');
+        }
+        return redirect('/admin/view-project/'.$request->input('project_name'));
     }
 }

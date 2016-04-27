@@ -16,10 +16,6 @@
                                 <input type="text" name="comp_name" class="form-control" placeholder="enter comp name" />
                             </li>
                             <li class="form-group">
-                                <label for="des">Comp Description</label>
-                                <input type="text" name="des" class="form-control"  placeholder="enter optional description" />
-                            </li>
-                            <li class="form-group">
                                 <label for="date">Display Date</label>
                                 <input type="text" name="date" class="form-control"  placeholder="enter date you wish to display" />
                             </li>

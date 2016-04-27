@@ -63,4 +63,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/admin/deactivate-client','AdminController@deactivate_client');
     Route::post('/admin/activate-project','AdminController@activate_project');
     Route::post('/admin/deactivate-project','AdminController@deactivate_project');
+    Route::post('/admin/deactivate-comp','AdminController@deactivate_comp');
+    Route::post('/admin/activate-comp','AdminController@activate_comp');
 });

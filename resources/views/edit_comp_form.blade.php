@@ -7,17 +7,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Edit Comp</div>
                 <div class="panel-body">
-                    <form method="post" action="/admin/new-comp" enctype="multipart/form-data">
+                    <form method="post" action="/admin/edit-comp" enctype="multipart/form-data">
                         {{ Form::token() }}
                         <input type="hidden" name="project" value="{{$project}}" />
+                        <input type="hidden" name="id" value="{{$id}}" />
                         <ul style="list-style:none;">
                             <li class="form-group">
                                 <label for="comp_name">Comp Name</label>
                                 <input type="text" name="comp_name" class="form-control" placeholder="enter comp name" value="{{$name}}" />
-                            </li>
-                            <li class="form-group">
-                                <label for="des">Comp Description</label>
-                                <input type="text" name="des" class="form-control"  placeholder="enter optional description" value="{{$des}}" />
                             </li>
                             <li class="form-group">
                                 <label for="date">Display Date</label>
