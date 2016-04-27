@@ -9,6 +9,8 @@
 
                 <div class="panel-body">
                     <a href="/admin/new-comp/{{$project}}" class="button">Add Comp</a><br />
+                    <a href="/admin/edit-project/{{$project}}">Edit Project</a><br /> 
+                    <a href="/view/project/{{$project}}">Client View</a><br />
                     <a href="" class="button arc-content-trigger">View Archived Comps</a>
                 </div>
             </div>
@@ -26,7 +28,11 @@
                                     <span class="display-date">{{$comp->display_date}}</span>
                                 </div>
                                 <div class="col-md-5">
-                                    <img src="{{$comp->img_path}}" alt="comp image"/>
+                                    @if(strpos($comp->img_path,'.pdf'))
+                                        <a href="{{$comp->img_path}}" target="_blank">View PDF</a>
+                                    @else
+                                        <img src="{{$comp->img_path}}" alt="comp image"/>
+                                    @endif
                                 </div>
                                 <div class="col-md-2">
                                     <a href="/admin/edit-comp/{{$comp->id}}">edit</a>

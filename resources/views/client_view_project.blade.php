@@ -31,7 +31,11 @@
                @endif
                <!-- <h2>Website Refinements</h2>-->
                 <ul class="assets-list">
-                  <li><a href="/view/comp/{{$comp->id}}">{{$comp->title}}</a></li>
+                  @if(strpos($comp->img_path,'.pdf'))
+                      <li><a href="{{$comp->img_path}}" target="_blank">{{$comp->title}}</a></li>
+                  @else
+                      <li><a href="/view/comp/{{$comp->id}}">{{$comp->title}}</a></li>
+                  @endif
                 </ul>
               </section>
             @endforeach
