@@ -24,7 +24,24 @@ class CompController extends Controller{
         $project = Project::where('name','=',$project)->get();
         foreach($project as $p){
             $project_name = str_replace('-',' ',$p->name); 
+            if(!empty($p->project_contact)){
+                $contacts = explode("\n",$p->project_contact);
+                if(!empty($contacts)){
+                    foreach($contacts as $contact){
+                        $cons[] = explode(':',$contact); 
+                    } 
+                }
+            }
         }
-        return view('client_view_project',['comps' => $comps, 'project_name' => $project_name, 'show_client_project' => true, 'show_comp' => true]);
+        $data_array = array(
+            'comps' => $comps, 
+            'project_name' => $project_name, 
+            'show_client_project' => true, 
+            'show_comp' => true
+        );
+        if(!empty($cons)){
+            $data_array['contacts'] = $cons;
+        }
+        return view('client_view_project',$data_array);
     }
 }

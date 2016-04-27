@@ -12,7 +12,11 @@
         </div>
         <hr>
         <ul class="contact-list">
-        <!--  <li><a href="mailto:insa@qltd.com"><i class="fa fa-envelope"></i> Insa Keilbach</a></li>-->
+            @if(!empty($contacts))
+                @foreach($contacts as $contact)
+                    <li><a href="mailto:{{$contact[1]}}"><i class="fa fa-envelope"></i> {{$contact[0]}}</a></li>
+                @endforeach
+            @endif
         </ul>
         </header>
       </div>

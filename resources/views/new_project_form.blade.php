@@ -28,6 +28,10 @@
                                 <input type="text" name="project_start_date" class="form-control"  placeholder="enter start date" />
                             </li>
                             <li class="form-group">
+                                <label for="project_contact">Project Contacts (put each contact on their own line)</label>
+                                <textarea name="project_contact" class="form-control" placeholder="Sally Smith:sally@email.com"></textarea>
+                            </li>
+                            <li class="form-group">
                                 <input type="submit" name="submit_new_client" class="btn btn-default"  value="save new project" />
                             </li>
                         </ul>

@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="/css/ie-fix.css">
     <script type="text/javascript" src="//use.typekit.net/wfh0pcr.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
