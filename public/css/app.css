@@ -1,6 +1,9 @@
 .dissapear {
   display: none; }
 
+body {
+  font-size: 18px; }
+
 .client-list li, .project-wrap li {
   list-style: none; }
   .client-list li.client, .project-wrap li.client {
