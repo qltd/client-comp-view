@@ -33,4 +33,26 @@ img {
     max-width: 100%;
 }
 
+//vars
+$gray: #3d393a;
+$black: #000;
+$white: #fff;
 
+.navbar{
+    border-bottom: 5px solid $black;
+    background: $white;
+    padding: 35px 3%;
+    color: $black;
+}
+
+.page-title {
+    font-size: 10.6rem;
+    margin: 0;
+    padding: 4% 3%;
+    //font-family: $primary-font;
+    text-transform: uppercase;
+    border-bottom: 5px solid $black;
+    letter-spacing: 0.2em;
+    color: $white;
+    background: $black;
+}
