@@ -1,11 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container page-title-wrap">
+    <div class="row">
+        <div class="col-md-12 ">
+            <h2 class="page-title"><a href="/admin/view-project/{{$name}}">{{str_replace("-"," ",$name)}}</a></h2>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-12 ">
             <div class="panel panel-default">
-                <div class="panel-heading">Edit Project {{$name}}</div>
+                <div class="panel-heading">Edit Project <span class="name">{{str_replace("-"," ",$name)}}</span></div>
                 <div class="panel-body">
                     <form method="post" action="/admin/edit-project/{{$name}}">
                         {{ Form::token() }}

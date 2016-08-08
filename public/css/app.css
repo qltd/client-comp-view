@@ -2,7 +2,9 @@
   display: none; }
 
 body {
-  font-size: 18px; }
+  font-size: 22px;
+  background: #fff;
+  color: #000; }
 
 .client-list li, .project-wrap li {
   list-style: none; }
@@ -10,13 +12,109 @@ body {
     list-style: none; }
 
 .client-name, .name {
-  font-size: 16px;
   text-transform: uppercase; }
 
 .client em, .project em {
-  margin-right: 1rem; }
+  margin-right: 2rem; }
 
 img {
   max-width: 100%; }
+
+.navbar {
+  border-bottom: 5px solid #000;
+  background: #fff;
+  padding: 15px 0;
+  color: #000; }
+  .navbar a {
+    font-size: 28px; }
+    .navbar a:link, .navbar a:visited {
+      color: #000 !important; }
+    .navbar a:hover, .navbar a:active {
+      color: #404040 !important; }
+
+.panel-default {
+  border: 3px solid #000;
+  border-radius: 0; }
+  .panel-default > .panel-heading {
+    color: #fff;
+    background: #000;
+    font-size: 28px;
+    border-radius: 0; }
+
+.btn-primary, .btn-default {
+  background: #000;
+  color: #fff;
+  border-radius: 0;
+  border-color: #000;
+  transition: all 0.5s ease; }
+  .btn-primary:hover, .btn-default:hover {
+    background: #404040;
+    border-color: #404040;
+    color: #fff; }
+
+.btn {
+  font-size: 28px; }
+
+.btn-link {
+  color: #000;
+  font-size: 18px; }
+  .btn-link:hover {
+    background: #404040; }
+
+.form-control {
+  background-color: #fff;
+  background-image: none;
+  border: 2px solid #000;
+  border-radius: 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  color: #000;
+  display: block;
+  font-size: 18px;
+  height: auto;
+  padding: 6px 12px; }
+  .form-control:focus {
+    border-color: #404040; }
+
+.col-md-2 .panel-body a {
+  transition: all 0.3s ease;
+  display: block;
+  margin-bottom: 15px; }
+  .col-md-2 .panel-body a:link, .col-md-2 .panel-body a:visited {
+    color: #000 !important; }
+  .col-md-2 .panel-body a:hover, .col-md-2 .panel-body a:active {
+    color: #ff6c96 !important;
+    text-decoration: none; }
+
+.col-md-10 .panel-body a {
+  transition: all 0.3s ease; }
+  .col-md-10 .panel-body a:link, .col-md-10 .panel-body a:visited {
+    color: #000 !important; }
+  .col-md-10 .panel-body a:hover, .col-md-10 .panel-body a:active {
+    color: #ff6c96 !important;
+    text-decoration: none; }
+
+.client-list .client, .client-list .project, .project-wrap .client, .project-wrap .project {
+  margin-bottom: 15px; }
+
+.page-title-wrap {
+  text-transform: uppercase;
+  border-bottom: 5px solid #000;
+  letter-spacing: 0.2em;
+  color: #fff;
+  background: #000;
+  width: 100%;
+  position: relative;
+  top: -20px;
+  margin-bottom: 20px; }
+  .page-title-wrap h2 {
+    font-size: 50px;
+    padding: 20px; }
+  .page-title-wrap a {
+    transition: all 0.3s ease; }
+    .page-title-wrap a:link, .page-title-wrap a:visited {
+      color: #fff !important; }
+    .page-title-wrap a:hover, .page-title-wrap a:active {
+      color: #ff6c96 !important;
+      text-decoration: none; }
 
 /*# sourceMappingURL=app.css.map */

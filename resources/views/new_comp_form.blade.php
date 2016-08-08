@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container page-title-wrap">
+    <div class="row">
+        <div class="col-md-12 ">
+            <h2 class="page-title"><a href="/admin/view-project/{{$project}}">{{str_replace("-"," ",$project)}}</a></h2>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-12 ">

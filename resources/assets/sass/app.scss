@@ -2,10 +2,18 @@
 
 //Styles for comp app @rdar
 
+//vars
+$gray: #3d393a;
+$black: #000;
+$white: #fff;
+$pink: #ff6c96;
+
 .dissapear {display:none;}
 
 body {
-    font-size:18px;
+    font-size:22px;
+    background:$white;
+    color:$black;
 }
 
 .client-list, .project-wrap {
@@ -19,13 +27,12 @@ body {
 
 
 .client-name, .name {
-    font-size: 16px;
     text-transform: uppercase;
 }
 
 .client, .project {
     em {
-        margin-right: 1rem;
+        margin-right: 2rem;
     }
 }
 
@@ -33,26 +40,145 @@ img {
     max-width: 100%;
 }
 
-//vars
-$gray: #3d393a;
-$black: #000;
-$white: #fff;
-
-.navbar{
+.navbar {
     border-bottom: 5px solid $black;
     background: $white;
-    padding: 35px 3%;
+    padding: 15px 0;
     color: $black;
+
+    a {
+        font-size:28px;
+
+        &:link, &:visited {
+            color: $black !important; 
+        }
+
+        &:hover, &:active {
+            color: lighten($black,25%) !important; 
+        }
+    }
 }
 
-.page-title {
-    font-size: 10.6rem;
-    margin: 0;
-    padding: 4% 3%;
-    //font-family: $primary-font;
+.panel-default  {
+    border: 3px solid $black;
+    border-radius:0;
+    > .panel-heading {
+        color: $white;
+        background: $black;
+        font-size:28px;
+        border-radius:0;
+    }
+}
+
+.btn-primary, .btn-default {
+    background:$black;
+    color:$white;
+    border-radius:0;
+    border-color:$black;
+    transition: all 0.5s ease;
+
+    &:hover {
+        background:lighten($black,25%); 
+        border-color:lighten($black,25%);
+        color:$white;
+    }
+}
+
+.btn {
+    font-size:28px;
+}
+
+.btn-link {
+    color:$black;
+    font-size:18px;
+    &:hover {
+        background:lighten($black,25%); 
+    }
+}
+
+.form-control {
+    background-color: $white;
+    background-image: none;
+    border: 2px solid $black;
+    border-radius: 0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: $black;
+    display: block;
+    font-size: 18px;
+    height: auto;
+    padding: 6px 12px;
+
+    &:focus {
+        border-color: lighten($black,25%); 
+    }
+}
+
+.col-md-2 {
+    .panel-body {
+        a {
+            transition: all 0.3s ease; 
+            display:block;
+            margin-bottom:15px;
+
+            &:link, &:visited {
+                color: $black !important; 
+            }
+
+            &:hover, &:active {
+                color: $pink !important; 
+                text-decoration:none;
+            }
+        } 
+    }
+}
+
+.col-md-10 {
+    .panel-body {
+        a {
+            transition: all 0.3s ease; 
+            &:link, &:visited {
+                color: $black !important; 
+            }
+
+            &:hover, &:active {
+                color: $pink !important; 
+                text-decoration:none;
+            }
+        } 
+    }
+
+}
+
+.client-list, .project-wrap {
+    .client, .project {
+        margin-bottom:15px; 
+    }
+}
+
+.page-title-wrap {
     text-transform: uppercase;
     border-bottom: 5px solid $black;
     letter-spacing: 0.2em;
     color: $white;
     background: $black;
+    width:100%;
+    position:relative;
+    top:-20px;
+    margin-bottom:20px;
+    h2 {
+        font-size:50px; 
+        padding:20px;
+    }
+
+    a {
+        transition: all 0.3s ease; 
+        &:link, &:visited {
+            color: $white !important; 
+        }
+
+        &:hover, &:active {
+            color: $pink !important; 
+            text-decoration:none;
+        }
+    }
 }
