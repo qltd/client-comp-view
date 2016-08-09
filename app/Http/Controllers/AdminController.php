@@ -79,7 +79,7 @@ class AdminController extends Controller {
            $request->session()->flash('alert-warning', 'Project not selected'); 
            return redirect("/");
         }
-        $comps = Comp::where('project','=',$project)->get();
+        $comps = Comp::where('project','=',$project)->orderBy('id','desc')->get();
 
         return view('view_project',['comps' => $comps, 'project' => $project]);
     }

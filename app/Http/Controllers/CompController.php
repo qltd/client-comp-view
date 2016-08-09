@@ -20,7 +20,7 @@ class CompController extends Controller{
     }
 
     public function view_project($project){
-        $comps = Comp::where('project','=',$project)->get(); 
+        $comps = Comp::where('project','=',$project)->orderBy('id','desc')->get(); 
         $project = Project::where('name','=',$project)->get();
         foreach($project as $p){
             $project_name = str_replace('-',' ',$p->name); 
