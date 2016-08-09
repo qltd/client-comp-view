@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container page-title-wrap">
+    <div class="row">
+        <div class="col-md-12 ">
+            <h2 class="page-title">{{str_replace("-"," ",$project)}}</h2>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-2 ">
@@ -8,9 +15,9 @@
                 <div class="panel-heading">Actions</div>
 
                 <div class="panel-body">
-                    <a href="/admin/new-comp/{{$project}}" class="button">Add Comp</a><br />
-                    <a href="/admin/edit-project/{{$project}}">Edit Project</a><br /> 
-                    <a href="/view/project/{{$project}}">Client View</a><br />
+                    <a href="/admin/new-comp/{{$project}}" class="button">Add Comp</a>
+                    <a href="/admin/edit-project/{{$project}}">Edit Project</a> 
+                    <a href="/view/project/{{$project}}">Client View</a>
                     <a href="" class="button arc-content-trigger">View Archived Comps</a>
                 </div>
             </div>

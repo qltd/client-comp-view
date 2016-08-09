@@ -121,7 +121,7 @@ class AdminController extends Controller {
         }else{
             $request->session()->flash('alert-warning', 'Sorry, we were not able to update that client'); 
         }
-        return redirect('/admin');
+        return redirect("/admin/view-projects/{$client}");
     }
 
     public function edit_project(Request $request, $project){
@@ -133,7 +133,7 @@ class AdminController extends Controller {
         }else{
             $request->session()->flash('alert-warning', 'Sorry, we were not able to update that project'); 
         }
-        return redirect('/admin');
+        return redirect("admin/view-project/{$project}");
     }
 
     public function edit_comp(Request $request){
@@ -201,7 +201,7 @@ class AdminController extends Controller {
             $project->project_contact = $project_contact;
             $project->save();
             $request->session()->flash('alert-success','New project was successfully added');
-            $redirect = '/admin';
+            $redirect = "/admin/view-projects/{$client}";
         }else{
             $request->session()->flash('alert-warning','Project name must be filled out and client selected'); 
             $redirect = '/admin/new-project';
@@ -228,7 +228,7 @@ class AdminController extends Controller {
             $comp->save();
             //redirect and give success message
             $request->session()->flash('alert-success','New comp was successfully added');
-            $redirect = '/admin';
+            $redirect = "/admin/view-project/{$request->input('project')}";
         }else{
             $request->session()->flash('alert-warning','Sorry, that is not a valid file'); 
             $redirect = '/admin/new-comp/'.$request->input('project');
